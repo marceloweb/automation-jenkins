@@ -1,15 +1,14 @@
 node {
 
   try {
-      environment {
+      stage('Preparation') {
          
-         withCredentials([string(credentialsId: 'jenkins-aws-secret-key-id', variable: 'AWS_ACCESS_KEY_ID')]) {
-            AWS_ACCESS_KEY_ID = $AWS_ACCESS_KEY_ID
+         withCredentials([
+	    string(credentialsId: 'jenkins-aws-secret-key-id', variable: 'AWS_ACCESS_KEY_ID'),
+            string(credentialsId: 'jenkins-aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')
+         ]) {
+            sh "echo $AWS_ACCESS_KEY_ID $AWS_SECRET_ACCESS_KEY"
          }
-
-         withCredentials([string(credentialsId: 'jenkins-aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-            AWS_SECRET_ACCESS_KEY = $AWS_SECRET_ACCESS_KEY
-         }    
 
       }
 
