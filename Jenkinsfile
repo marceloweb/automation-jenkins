@@ -6,6 +6,10 @@ node {
          AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
       }
 
+      withCredentials([string(credentialsId: 'jenkins-aws-secret-key-id', variable: 'AWS_ACCESS_KEY_ID')]) {
+         echo "AWS: '{$AWS_ACCESS_KEY_ID}'"
+      }
+
       stage('Preparation') {
         checkout scm
       }
