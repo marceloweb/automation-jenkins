@@ -15,7 +15,7 @@ node {
       }
 
       stage('Building EC2') {
-        sh "echo ${env.AWS_ACCESS_KEY_ID} ${env.AWS_SECRET_ACCESS_KEY}"
+        sh "echo ${AWS_ACCESS_KEY_ID} ${env.AWS_SECRET_ACCESS_KEY}"
         sh "./terraform init"
         sh "./terraform plan"
         sh "./terraform apply -auto-approve" 
