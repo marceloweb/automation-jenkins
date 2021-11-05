@@ -1,0 +1,4 @@
+[web]
+34.227.177.42 ansible_user=ubuntu ansible_ssh_private_key_file=/home/marcelo/tutorial.pem
+
+[database]

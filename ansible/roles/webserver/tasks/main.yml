@@ -1,0 +1,9 @@
+---
+- name: 'Update cache'
+  apt: update_cache=yes
+  become: yes
+- name: 'Install all packages'
+  apt:
+    name: ['mcrypt','php','apache2','php-gd','libapache2-mod-php','php-pear','php-mysql']
+    state: latest
+  become: yes

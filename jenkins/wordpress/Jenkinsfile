@@ -1,0 +1,15 @@
+node {
+
+  try {
+      stage('Preparation') {
+         checkout scm
+      }
+
+      stage('Build') {
+         sh "cd /home/marceloweb/automation-jenkins/ansible/ && ansible-playbook configuring.yml -i hosts"
+      }
+
+    } catch(e) {
+       throw e;
+   }                                     
+}       
