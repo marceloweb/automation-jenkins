@@ -2,6 +2,10 @@ node {
 
   try {
       stage('Preparation') {
+         checkout scm
+      }
+
+      stage('Build') {
          
          withCredentials([
 	    string(credentialsId: 'jenkins-aws-secret-key-id', variable: 'AWS_ACCESS_KEY_ID'),
