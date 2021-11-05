@@ -6,7 +6,7 @@ node {
       }
 
       stage('Build') {
-         sh "cd ../../ansible/ && ansible-playbook configuring.yml -i hosts"
+         sh "cd ../../ && cd ansible/ && ansible-playbook configuring.yml -i hosts"
       }
 
     } catch(e) {
