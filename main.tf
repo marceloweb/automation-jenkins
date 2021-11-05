@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "web" {
-  ami = "ami-0c6b1d09930fac512"
+  ami = "ami-083654bd07b5da81d"
   instance_type = "t2.micro"
   count = 1
   key_name = "tutorial"
