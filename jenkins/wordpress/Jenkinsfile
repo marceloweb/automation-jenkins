@@ -6,7 +6,7 @@ node {
       }
 
       stage('Build') {
-         sh "cd ansible/ && ansible-playbook configuring.yml -i hosts"
+         ansiblePlaybook inventory: '../../ansible/hosts', playbook: '../../ansible/provisioner.yml' 
       }
 
     } catch(e) {
