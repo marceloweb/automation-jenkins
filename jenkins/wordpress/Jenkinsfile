@@ -6,6 +6,7 @@ node {
       }
 
       stage('Build') {
+         sh "pwd && ansible --version && cd ../../ansible && ls -la"
          ansiblePlaybook inventory: '../../ansible/hosts', playbook: '../../ansible/provisioner.yml' 
       }
 
