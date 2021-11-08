@@ -28,7 +28,7 @@ resource "aws_instance" "web" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = "file(tutorial.pem)"
+    private_key = "${file("tutorial.pem")}"
     host        = "${self.public_ip}"
   }
 
