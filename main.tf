@@ -34,6 +34,7 @@ resource "aws_instance" "web" {
 
   provisioner "remote-exec" {
      inline = [
+        "sudo apt update",
         "sudo apt install software-properties-common",
         "sudo add-apt-repository --yes --update ppa:ansible/ansible",
         "sudo apt install -y ansible",
