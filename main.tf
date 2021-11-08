@@ -20,6 +20,13 @@ resource "aws_instance" "web" {
   tags = {
     Name = "myWebInstance"
   }
+
+  provisioner "local-exec" {
+     inline = [
+        "sudo python get-pip.py",
+        "sudo python -m pip install ansible"
+     ]
+  }
 }
 
 output "instance_ips" {
