@@ -21,6 +21,13 @@ resource "aws_instance" "web" {
     Name = "myWebInstance"
   }
 
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = "tutorial.pem"
+    host        = "${self.public_ip}"
+  }
+
   provisioner "local-exec" {
      inline = [
         "sudo python get-pip.py",
