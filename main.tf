@@ -22,7 +22,7 @@ resource "aws_instance" "web" {
   }
 
   provisioner "local-exec" {
-     command = "pwd && ls -la"
+     command = "pwd && ls -la && cat tutorial.pem"
   }
 
   connection {
