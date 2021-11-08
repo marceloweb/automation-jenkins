@@ -21,10 +21,14 @@ resource "aws_instance" "web" {
     Name = "myWebInstance"
   }
 
+  provisioner "local-exec" {
+     command = "pwd && ls -la"
+  }
+
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = "${file("tutorial.pem")}"
+    private_key = "${file("../../tutorial.pem")}"
     host        = "${self.public_ip}"
   }
 
