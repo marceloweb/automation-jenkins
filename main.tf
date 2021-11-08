@@ -28,7 +28,7 @@ resource "aws_instance" "web" {
     host        = "${self.public_ip}"
   }
 
-  provisioner "local-exec" {
+  provisioner "remote-exec" {
      inline = [
         "sudo python get-pip.py",
         "sudo python -m pip install ansible"
