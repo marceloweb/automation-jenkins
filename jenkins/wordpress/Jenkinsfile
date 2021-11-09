@@ -15,7 +15,7 @@ node {
             sh '''sed -i "s/_ANSIBLE_USER_/${ANSIBLE_USER}/g" ansible/hosts'''
             sh '''sed -i "s/_PRIVATE_KEY_FILE_/${PRIVATE_KEY_FILE}/g" ansible/hosts'''
             sh '''cat $UBUNTU_EC2 > ./ansible/${PRIVATE_KEY_FILE} && chmod 0600 ./ansible/${PRIVATE_KEY_FILE}'''
-            sh '''/var/jenkins_home/ansible-playbook provisioner.yml -i hosts''' 
+            sh '''ansible-playbook ./ansible/provisioner.yml -i ./ansible/hosts''' 
          }
       }
 
