@@ -16,7 +16,7 @@ node {
             sh '''sed -i "s/_PRIVATE_KEY_FILE_/${PRIVATE_KEY_FILE}/g" ansible/hosts'''
             sh '''cat $UBUNTU_EC2 > ./ansible/${PRIVATE_KEY_FILE} && chmod 0600 ./ansible/${PRIVATE_KEY_FILE}'''
             sh "pwd && cd ansible/"
-            ansiblePlaybook inventory: 'hosts', playbook: 'provisioner.yml' 
+            ansiblePlaybook inventory: 'ansible/hosts', playbook: 'ansible/provisioner.yml' 
          }
       }
 
