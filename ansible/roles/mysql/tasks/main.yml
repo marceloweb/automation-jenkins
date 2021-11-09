@@ -4,7 +4,7 @@
   become: yes
 - name: 'Install all packages'
   apt:
-    name: ['libmcrypt-dev','mariadb-server']
+    name: ['libmcrypt-dev','mariadb-server','mariadb-client']
     state: latest
   become: yes
 
