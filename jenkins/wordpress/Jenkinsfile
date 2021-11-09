@@ -6,8 +6,18 @@ node {
       }
 
       stage('Build') {
-         sh "pwd && ansible --version && cd ../../ansible && ls -la"
-         ansiblePlaybook inventory: '../../ansible/hosts', playbook: '../../ansible/provisioner.yml' 
+
+         withCredentials([
+            sshUserPrivateKey(credentialsId: "ubuntu-ec2", keyFileVariable: 'UBUNTU_EC2')
+         ]) {
+            sh '''sed -i "s/_IP_WEB_/${IP_WEB}/g" ansible/hosts'''
+            sh '''sed -i "s/_IP_DATABASE_/${IP_DATABASE}/g" ansible/hosts'''
+            sh '''sed -i "s/_ANSIBLE_USER_/${ANSIBLE_USER}/g" ansible/hosts'''
+            sh '''sed -i "s/_PRIVATE_KEY_FILE_/${PRIVATE_KEY_FILE}/g" ansible/hosts'''
+            sh '''cat $UBUNTU_EC2 > ./ansible/${PRIVATE_KEY_FILE} && chmod 0600 ./ansible/${PRIVATE_KEY_FILE}'''
+            sh "pwd && ansible --version && cd ansible/"
+            ansiblePlaybook inventory: 'hosts', playbook: 'provisioner.yml' 
+         }
       }
 
     } catch(e) {
