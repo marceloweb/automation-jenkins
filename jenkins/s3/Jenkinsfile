@@ -13,9 +13,10 @@ node {
          ]) {
             sh "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID"
             sh "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
-            sh "./s3/terraform init"
-            sh "./s3/terraform plan"
-            sh "./s3/terraform apply -auto-approve"
+            sh "cp s3/main.tf ."
+            sh "./terraform init"
+            sh "./terraform plan"
+            sh "./terraform apply -auto-approve"
          }
 
       }
