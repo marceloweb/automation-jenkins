@@ -4,7 +4,7 @@
   become: yes
 - name: 'Install all packages'
   apt:
-    name: ['python-pymysql','libmcrypt-dev','mariadb-server','python-mysqldb']
+    name: ['libmcrypt-dev','mariadb-server','python-mysqldb']
     state: latest
   become: yes
 
