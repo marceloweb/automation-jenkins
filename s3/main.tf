@@ -13,7 +13,7 @@ provider "aws" {
 
 
 resource "aws_s3_bucket" "b" {
-  bucket = "my-tf-test-bucket"
+  bucket = "my-tutorial-s3-laleali"
   acl    = "private"
 
   tags = {
