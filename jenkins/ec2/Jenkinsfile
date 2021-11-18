@@ -17,7 +17,7 @@ node {
             sh "cat $UBUNTU_EC2 > ./tutorial.pem && chmod 0600 ./tutorial.pem"
             sh "cp ec2/main.tf ."
             sh '''
-            if [[ ! -e $JENKINS_HOME/terraform ]]; then
+            if [ ! -e $JENKINS_HOME/terraform ]; then
                mkdir -p $JENKINS_HOME/terraform && cp terraform $JENKINS_HOME/terraform/; 
             fi
             ''' 
