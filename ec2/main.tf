@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "s3TutorialBucket"
+    bucket = "tutorial-automation-with-jenkins"
     key = "ec2/ec2"
     region = "us-east-1"
   }
