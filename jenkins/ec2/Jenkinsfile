@@ -18,7 +18,7 @@ node {
             sh "cp ec2/main.tf ."
             sh "if [[ ! -e $JENKINS_HOME/terraform ]]; then"
             sh "   mkdir -p $JENKINS_HOME/terraform"
-            sh "   cp terraform $JENKINS_HOME/terraform/
+            sh "   cp terraform $JENKINS_HOME/terraform/"
             sh "fi"
             sh "$JENKINS_HOME/terraform/terraform init"
             sh "$JENKINS_HOME/terraform/terraform plan"
