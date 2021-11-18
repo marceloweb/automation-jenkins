@@ -16,8 +16,8 @@ node {
             sh "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY"
             sh "cat $UBUNTU_EC2 > ./tutorial.pem && chmod 0600 ./tutorial.pem"
             sh "cp ec2/main.tf ."
-            sh "if [[ ! -e $dir ]]; then"
-            sh "   mkdir $JENKINS_HOME/terraform"
+            sh "if [[ ! -e $JENKINS_HOME/terraform ]]; then"
+            sh "   mkdir -p $JENKINS_HOME/terraform"
             sh "   cp terraform $JENKINS_HOME/terraform/
             sh "fi"
             sh "$JENKINS_HOME/terraform/terraform init"
