@@ -5,6 +5,12 @@ terraform {
       version = "~> 3.17"
     }
   }
+  
+  backend "tutorial" {
+    bucket = "s3TutorialBucket"
+    key = "s3/s3"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {

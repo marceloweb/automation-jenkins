@@ -6,8 +6,10 @@ terraform {
     }
   }
 
-  backend "local" {
-    path = "../../terraform.tfstate"
+  backend "tutorial" {
+    bucket = "s3TutorialBucket"
+    key = "ec2/ec2"
+    region = "us-east-1"
   }
 }
 

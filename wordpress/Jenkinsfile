@@ -1,0 +1,25 @@
+node {
+
+  try {
+      stage('Preparation') {
+         checkout scm
+      }
+
+      stage('Build') {
+
+         withCredentials([
+            sshUserPrivateKey(credentialsId: "ubuntu-ec2", keyFileVariable: 'UBUNTU_EC2')
+         ]) {
+            sh '''sed -i "s/_IP_WEB_/${IP_WEB}/g" wordpress/hosts'''
+            sh '''sed -i "s/_IP_DATABASE_/${IP_DATABASE}/g" wordpress/hosts'''
+            sh '''sed -i "s/_ANSIBLE_USER_/${ANSIBLE_USER}/g" wordpress/hosts'''
+            sh '''sed -i "s/_PRIVATE_KEY_FILE_/${PRIVATE_KEY_FILE}/g" wordpress/hosts'''
+            sh '''cat $UBUNTU_EC2 > ./ansible/${PRIVATE_KEY_FILE} && chmod 0600 ./wordpress/${PRIVATE_KEY_FILE}'''
+            sh '''cd ansible && ansible-playbook provisioner.yml -i hosts''' 
+         }
+      }
+
+    } catch(e) {
+       throw e;
+   }                                     
+}       
